@@ -16,7 +16,7 @@ pipeline {
 		    		to: 'nairda6666@gmail.com'
 	    		
 	    	}
-	    	failure
+		failure{
 	    		emailext attachLog: true,
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
