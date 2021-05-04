@@ -5,7 +5,8 @@ pipeline {
         stage('Test') {
             steps {
             	echo 'Testing'
-                sh '~/docker-compose up -d test-app'
+                sh 'npm install'
+		sh 'npm test'
                 
             }
             post{
