@@ -14,7 +14,7 @@ pipeline {
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
 		    		subject: 'Test Succeed',
-		    		to: 'nairda6666@gmail.com'
+		    		to: 'turboreal9812@gmail.com'
 	    		
 	    	}
 		failure{
@@ -22,7 +22,7 @@ pipeline {
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
 		    		subject: 'Test failed',
-		    		to: 'nairda6666@gmail.com'
+		    		to: 'turboreal9812@gmail.com'
 	    	}
 	    }
         }
