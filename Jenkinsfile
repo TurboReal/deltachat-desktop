@@ -5,7 +5,7 @@ pipeline {
 	    stage('Build') {
 		    steps{
 		    	echo 'Building'
-		    	git url: 'https://github.com/TurboReal/deltachat-desktop'
+		    	git credentialsId: 'git_credentials', url: 'https://github.com/TurboReal/deltachat-desktop'
 		    	dir('Docker'){
 		    		sh '''
 					ls -l
