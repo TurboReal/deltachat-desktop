@@ -15,7 +15,7 @@ pipeline {
 					chmod +x ~/docker-compose
 					ls -l ~/docker-compose
 					docker-compose --version
-					~/docker-compose up
+					~/docker-compose up -d build-app
 				'''
 		   	 }
 		    }
@@ -34,7 +34,7 @@ pipeline {
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
 		    		subject: 'Test Succeed',
-		    		to: 'nairda98@interia.pl'
+		    		to: 'turboreal9812@gmail.com'
 	    		
 	    	}
 		failure{
@@ -42,7 +42,7 @@ pipeline {
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
 		    		subject: 'Test failed',
-		    		to: 'nairda98@interia.pl'
+		    		to: 'turboreal9812@gmail.com'
 	    	}
 	    }
         }
