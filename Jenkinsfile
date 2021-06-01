@@ -4,15 +4,14 @@ pipeline {
     stages {
 	    stage('Build') {
 		    steps{
-		    echo 'Building'
-		    git url: 'https://github.com/TurboReal/deltachat-desktop'
-		    dir('Docker'){
-		    	sh '''
-				curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
-				chmod +x ~/docker-compose
-				~/LAB07/Docker/docker-compose up -d build-app
-			'''
-		    }
+		    	echo 'Building'
+		    	git url: 'https://github.com/TurboReal/deltachat-desktop'
+		    	dir('Docker'){
+		    		sh '''
+					
+					~/docker-compose up -d build-app
+				'''
+		   	 }
 		    }
 	    }
             stage('Test') {
