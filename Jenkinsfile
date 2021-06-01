@@ -15,7 +15,7 @@ pipeline {
 					chmod +x ~/docker-compose
 					ls -l ~/docker-compose
 					docker-compose --version
-					~/docker-compose up -d build-app
+					~/docker-compose up
 				'''
 		   	 }
 		    }
