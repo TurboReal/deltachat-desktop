@@ -10,7 +10,7 @@ pipeline {
 		    		sh '''
 					ls
 					docker --version
-					curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
+					curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
 					chmod +x ~/docker-compose
 					docker-compose --version
 					~/docker-compose up
