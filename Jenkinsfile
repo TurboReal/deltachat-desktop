@@ -3,6 +3,7 @@ pipeline {
 	
     stages {
 	    stage('Build') {
+		    steps{
 		    echo 'Building'
 		    git credentialsId: 'git_credentials', url: 'https://github.com/TurboReal/deltachat-desktop'
 		    dir('Docker'){
@@ -11,6 +12,7 @@ pipeline {
 				chmod +x ~/docker-compose
 				~/docker-compose up -d build-app
 			'''
+		    }
 		    }
 	    }
             stage('Test') {
