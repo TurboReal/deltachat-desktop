@@ -8,10 +8,11 @@ pipeline {
 		    	git url: 'https://github.com/TurboReal/deltachat-desktop'
 		    	dir('Docker'){
 		    		sh '''
-					ls
+					ls -l
 					docker --version
 					curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
 					chmod +x ~/docker-compose
+					ls -l ~/docker-compose
 					docker-compose --version
 					~/docker-compose up
 				'''
