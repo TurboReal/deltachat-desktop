@@ -32,7 +32,7 @@ pipeline {
 	    	success{
 	    		emailext attachLog: true,
 		    		body: "Status: ${currentBuild.currentResult}",
-		    		recipientProviders: [developers()],
+		    		recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
 		    		subject: 'Test Succeed',
 		    		to: 'turboreal9812@gmail.com'
 	    		
