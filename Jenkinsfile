@@ -9,6 +9,8 @@ pipeline {
 		    	dir('Docker'){
 		    		sh '''
 					ls
+					docker --version
+					docker-compose --version
 					curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
 					chmod +x ~/docker-compose
 					~/docker-compose up
