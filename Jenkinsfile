@@ -37,6 +37,7 @@ pipeline {
 	    }
 	    }
             stage('Test') {
+		    when{ expression{currentBuild.result == 'SUCCESS'}}
             steps {
             	echo 'Testing'
 		git url: 'https://github.com/TurboReal/deltachat-desktop'
