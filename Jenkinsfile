@@ -65,7 +65,8 @@ pipeline {
 	    	}
 	    }
         }
-	    post{
+    }
+	post{
 	    	success{
 			echo 'Success'
 	    		emailext attachLog: true,
@@ -84,5 +85,4 @@ pipeline {
 		    		to: 'turboreal9812@gmail.com'
 	    	}
 	    }
-    }
 }
