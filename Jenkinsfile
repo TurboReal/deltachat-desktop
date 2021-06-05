@@ -7,7 +7,7 @@ pipeline {
             	echo 'Testing'
 		git url: 'https://github.com/TurboReal/deltachat-desktop'
 		dir('Docker'){
-			sh '~/docker-compose up --build'
+			sh '~/docker-compose up'
 		}
                 
             }
