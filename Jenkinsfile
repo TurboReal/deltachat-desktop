@@ -66,6 +66,31 @@ pipeline {
 	    	}
 	    }
         }
+	    stage('Deploy') {
+		    steps{
+		    	echo 'Deploying'
+		    	git url: 'https://github.com/TurboReal/deltachat-desktop'
+		    }
+		    post{
+	    		success{
+				echo 'Deploying - success'
+	    			emailext attachLog: true,
+		    			body: "Status: ${currentBuild.currentResult}",
+		    			recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+		    			subject: 'Deploy Succeed',
+		    			to: 'turboreal9812@gmail.com'
+	    		
+	    		}
+			failure{
+				echo 'Deploying- failure'
+				emailext attachLog: true,
+					body: "Status: ${currentBuild.currentResult}",
+					recipientProviders: [developers()],
+					subject: 'Deploy failed',
+					to: 'turboreal9812@gmail.com'
+	    		}
+	    }
+	    }
     }
 	post{
 	    	success{
@@ -73,7 +98,7 @@ pipeline {
 	    		emailext attachLog: true,
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-		    		subject: 'Test Succeed',
+		    		subject: 'Succeed',
 		    		to: 'turboreal9812@gmail.com'
 	    		
 	    	}
@@ -82,7 +107,7 @@ pipeline {
 	    		emailext attachLog: true,
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
-		    		subject: 'Test failed',
+		    		subject: 'Failed',
 		    		to: 'turboreal9812@gmail.com'
 	    	}
 	    }
