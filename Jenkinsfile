@@ -16,6 +16,25 @@ pipeline {
 				'''
 		   	 }
 		    }
+		    post{
+	    		success{
+				echo 'Building - success'
+	    			emailext attachLog: true,
+		    			body: "Status: ${currentBuild.currentResult}",
+		    			recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+		    			subject: 'Test Succeed',
+		    			to: 'turboreal9812@gmail.com'
+	    		
+	    		}
+			failure{
+				echo 'Building- failure'
+				emailext attachLog: true,
+					body: "Status: ${currentBuild.currentResult}",
+					recipientProviders: [developers()],
+					subject: 'Test failed',
+					to: 'turboreal9812@gmail.com'
+	    		}
+	    }
 	    }
             stage('Test') {
             steps {
@@ -46,5 +65,24 @@ pipeline {
 	    	}
 	    }
         }
+	    post{
+	    	success{
+			echo 'Success'
+	    		emailext attachLog: true,
+		    		body: "Status: ${currentBuild.currentResult}",
+		    		recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+		    		subject: 'Test Succeed',
+		    		to: 'turboreal9812@gmail.com'
+	    		
+	    	}
+		failure{
+			echo 'Failure'
+	    		emailext attachLog: true,
+		    		body: "Status: ${currentBuild.currentResult}",
+		    		recipientProviders: [developers()],
+		    		subject: 'Test failed',
+		    		to: 'turboreal9812@gmail.com'
+	    	}
+	    }
     }
 }
