@@ -30,6 +30,7 @@ pipeline {
             }
             post{
 	    	success{
+			echo 'Testing - success'
 	    		emailext attachLog: true,
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [[$class: 'DevelopersRecipientProvider']],
@@ -38,6 +39,7 @@ pipeline {
 	    		
 	    	}
 		failure{
+			echo 'Testing - failure'
 	    		emailext attachLog: true,
 		    		body: "Status: ${currentBuild.currentResult}",
 		    		recipientProviders: [developers()],
