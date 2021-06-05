@@ -12,7 +12,7 @@ pipeline {
 					curl -L "https://github.com/docker/compose/releases/download/1.29.0/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
 					chmod +x ~/docker-compose
 					docker-compose --version
-					~/docker-compose up build-app
+					~/docker-compose up --build build-app
 				'''
 		   	 }
 		    }
@@ -41,7 +41,7 @@ pipeline {
             	echo 'Testing'
 		git url: 'https://github.com/TurboReal/deltachat-desktop'
 		dir('Docker'){
-			sh '~/docker-compose up test-app'
+			sh '~/docker-compose up --build test-app'
 		}
                 
             }
