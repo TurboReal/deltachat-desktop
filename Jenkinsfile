@@ -67,9 +67,13 @@ pipeline {
 	    }
         }
 	    stage('Deploy') {
+		    when{ expression{currentBuild.result == 'SUCCESS' || currentBuild.result == null}}
 		    steps{
 		    	echo 'Deploying'
 		    	git url: 'https://github.com/TurboReal/deltachat-desktop'
+			dir('Docker'){
+				sh 'docker build -t deploy_deltachat -f Dockerfile-deploy .'
+			}
 		    }
 		    post{
 	    		success{
