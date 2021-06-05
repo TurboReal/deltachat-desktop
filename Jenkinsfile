@@ -15,7 +15,7 @@ pipeline {
 					chmod +x ~/docker-compose
 					ls -l ~/docker-compose
 					docker-compose --version
-					~/docker-compose up -d build-app
+					~/docker-compose up build-app
 				'''
 		   	 }
 		    }
@@ -24,7 +24,7 @@ pipeline {
             steps {
             	echo 'Testing'
 		dir('Docker'){
-			sh '~/docker-compose up -d test-app'
+			sh '~/docker-compose up test-app'
 		}
                 
             }
